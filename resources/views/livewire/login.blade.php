@@ -1,24 +1,29 @@
 <div>
-    <div class="container mx-auto py-16 px-4">
-        <div class="sm-w-full md:w-1/2 mx-auto bg-white rounded-lg shadow-md px-6 py-8">
-            <h1 class="text-3xl font-bold mb-6">Login MAS POS</h1>
-            <form>
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        Username
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter username">
+
+    <div class="container mx-auto p-4">
+        <div class="relative h-screen md:place-content-center grid">
+            <form wire:submit.prevent="login" method="POST"
+                  class="w-full absolute rounded-t-lg bottom-0 md:relative md:min-w-[500px] flex flex-col gap-6 px-5 md:px-16 py-8 shadow-lg  md:rounded z-[50] bg-white">
+                <h1 class="font-semibold text-xl md:text-center">Login</h1>
+            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="hidden md:flex" >name</label>
+                        <input type="text" name="name" placeholder="name" class="border-gray-400 rounded" wire:model="name"/>
+                        @error('name')
+                        <p class="text-red-700">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="hidden md:flex">password</label>
+                        <input type="password" name="password" placeholder="password" class="border-gray-400 rounded" wire:model="password" />
+                        @error('password')
+                        <p class="text-red-700">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        Password
-                    </label>
-                    <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter password">
-                    <p class="text-red-500 text-xs italic">Please check your password.</p>
-                </div>
-                <div class="flex items-center justify-between">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-button">
-                </div>
+                    <button class="bg-blue-700 text-white rounded-lg px-4 py-2" type="submit">Login</button>
+
             </form>
         </div>
     </div>

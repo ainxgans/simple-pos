@@ -9,8 +9,13 @@ class Cart extends Component
     public function render()
     {
         $carts = \App\Models\Cart::with('product')->get();
-        return view('livewire.cart',[
-            'carts' => $carts
+        $total = $carts->sum(function($cart) {
+            return $cart->qty * $cart->product->price;
+        });
+
+        return view('livewire.cart', [
+            'carts' => $carts,
+            'total' => $total
         ]);
     }
     public function deleteFromCart($id)
@@ -37,4 +42,10 @@ class Cart extends Component
         }
         $this->render();
         }
+    public function calculateTotalPrice()
+    {
+        return $this->carts->sum(function($cart) {
+            return $cart->qty * $cart->product->price;
+        });
+    }
 }

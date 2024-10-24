@@ -31,4 +31,13 @@
         @endforeach
         </tbody>
     </table>
+        <div class="flex justify-between items-center mt-5">
+            <h3 class="text-xl font-semibold">Total:</h3>
+            <span class="text-2xl font-bold">Rp {{ number_format($total, 0, ',', '.') }}</span>
+        </div>
+
+        <div class="flex justify-end mt-5 space-x-4">
+            <a href="{{ route('home') }}" wire:navigate class="px-4 py-2 bg-gray-200 text-blue-800 rounded-lg">Back to Home</a>
+            <a href="/payment" wire:navigate class="px-4 py-2 bg-blue-800 text-white rounded-lg">Pay Bill</a>
+        </div>
 </div>
